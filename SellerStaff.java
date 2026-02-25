@@ -119,11 +119,15 @@ public class SellerStaff implements IStaff {
     // ====== Permission Logic ======
     @Override
     public boolean can(String action) {
-        // Seller has limited permissions
-        return action.equalsIgnoreCase("SELL")
-            || action.equalsIgnoreCase("VIEW_MENU");
+        if(action.equals(Garage.CREATE_MENU_ITEM) || action.equals(Garage.VIEW_ORDERS) || action.equals(Garage.UPDATE_ORDER_STATUS))
+        {
+            return true;
+        }
+        // TODO Auto-generated method stub
+        return false;
+     
+        
     }
-
     // ====== Getters ======
     public String getStaffId() { return staffId; }
     public String getFullName() { return fullName; }

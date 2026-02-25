@@ -9,6 +9,9 @@ public class ManagerStaff implements IStaff {
     private String position;
     private boolean active;
 
+    
+
+
     // ====== Constructor ======
     public ManagerStaff(String staffId, String fullName, String phone,
                         String username, String password, String position) {
