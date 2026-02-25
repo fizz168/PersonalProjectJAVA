@@ -341,7 +341,21 @@ public class Garage {
         }
         return null;
     }
+// =========================
+// VEHICLE HELPERS
+// =========================
+public void returnVehicle(String vehicleNumberPlate) {
+    if (!requireStaffLogin()) return;
 
+    Vehicle v = findVehicleByNumberPlate(vehicleNumberPlate);
+    if (v == null) {
+        setLastMessage("Vehicle not found.");
+        return;
+    }
+
+    v.returnCar(); // mark the vehicle as available
+    setLastMessage("Vehicle " + v.getVehicleNumberPlate() + " is now available.");
+}
     // =========================
     // ORDER MANAGEMENT
     // =========================
