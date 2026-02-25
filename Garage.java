@@ -414,4 +414,12 @@ public void returnVehicle(String vehicleNumberPlate) {
                     + " | Created by: " + (o.getCreatedBy() != null ? o.getCreatedBy().getFullName() : "Unknown"));
         }
     }
+
+    @Override
+    public String toString() {
+        return "Garage [garageName=" + garageName + ", garageAddress=" + garageAddress + ", vehicles=" + vehicles
+                + ", staffs=" + staffs + ", orders=" + orders + ", customers=" + customers + ", loggedInStaff="
+                + loggedInStaff + ", lastMessage=" + lastMessage + "]";
+    }
+    
 }
