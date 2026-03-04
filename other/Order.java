@@ -70,5 +70,11 @@ public class Order {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Order [orderId=" + orderId + ", customer=" + customer + ", item=" + item + ", quantity=" + quantity
+                + ", totalPrice=" + totalPrice + ", createdBy=" + createdBy + ", paid=" + paid + "]";
+    }
+
    
 }

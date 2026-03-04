@@ -1,12 +1,4 @@
 package user;
-// public interface SellerStaff implements IStaff{
-//     private String staffId;
-//     private String fullName;
-//     private String phone;
-//     private String username;
-//     private String password;
-//     private String position;
-//     private boolean active;
 
 import controller.Garage;
 
