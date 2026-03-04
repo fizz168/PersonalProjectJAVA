@@ -1,3 +1,4 @@
+package controller;
 // import java.util.ArrayList;
 
 // public class Garage {
@@ -156,6 +157,12 @@
 
 // }
 import java.util.ArrayList;
+
+import other.Customer;
+import other.Order;
+import other.Vehicle;
+import user.IStaff;
+import user.ManagerStaff;
 
 public class Garage {
     public static final String CREATE_STAFF = "CREATE_STAFF";

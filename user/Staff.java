@@ -1,3 +1,4 @@
+package user;
 public class Staff {
 
     private String nameStaff;
@@ -82,4 +83,25 @@ public void setPassword(String password) {
             this.staffPhoneNumber = staffPhoneNumber;
         }
     }
+
+
+    @Override
+    public String toString() {
+        return "Staff [nameStaff=" + nameStaff + ", staffId=" + staffId + ", staffPersonalId=" + staffPersonalId
+                + ", staffPhoneNumber=" + staffPhoneNumber + ", active=" + active + ", username=" + username
+                + ", password=" + password + "]";
+    }
+
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+       Staff s1 = (Staff) obj; 
+       if(s1.staffPhoneNumber.equals(staffPhoneNumber)){
+        return true;
+       }
+       return false;
+    }
+    
 }

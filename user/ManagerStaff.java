@@ -1,27 +1,21 @@
-public class CashierStaff implements IStaff{
-   
-    // ====== Fields (Encapsulation) ======
+package user;
+public class ManagerStaff implements IStaff {
+
+    // ====== Fields ======
     private String staffId;
     private String fullName;
     private String phone;
     private String username;
-    private String password;   
-    private String position;  
+    private String password;
+    private String position;
     private boolean active;
 
-    @Override
-    public boolean can(String action) {
-        if(action.equals(Garage.CREATE_CUSTOMER) || action.equals(Garage.CREATE_ORDER) || action.equals(Garage.VIEW_CUSTOMERS) || action.equals(Garage.VIEW_ORDERS))
-        {
-            return true;
-        }
-        // TODO Auto-generated method stub
-        return false;
-    }
+    
+
 
     // ====== Constructor ======
-    public CashierStaff(String staffId, String fullName, String phone,
-                 String username, String password, String position) {
+    public ManagerStaff(String staffId, String fullName, String phone,
+                        String username, String password, String position) {
 
         setStaffId(staffId);
         setFullName(fullName);
@@ -33,6 +27,13 @@ public class CashierStaff implements IStaff{
         this.active = true;
     }
 
+    // ====== Interface Implementation ======
+    @Override
+    public boolean can(String action) {
+        // Manager can do everything
+        return true;
+    }
+
     // ====== Getters ======
     public String getStaffId() { return staffId; }
     public String getFullName() { return fullName; }
@@ -41,51 +42,47 @@ public class CashierStaff implements IStaff{
     public String getPosition() { return position; }
     public boolean isActive() { return active; }
 
-    // For login check (simple for lesson)
+    // ====== Business Logic ======
     public boolean checkPassword(String input) {
         return password != null && password.equals(input);
     }
 
-    // ====== Setters (with simple validation) ======
+    // ====== Setters with Validation ======
     public void setStaffId(String staffId) {
-        if (isBlank(staffId)) this.staffId = "UNKNOWN";
-        else this.staffId = staffId.trim();
+        this.staffId = isBlank(staffId) ? "UNKNOWN" : staffId.trim();
     }
 
     public void setFullName(String fullName) {
-        if (isBlank(fullName)) this.fullName = "No Name";
-        else this.fullName = fullName.trim();
+        this.fullName = isBlank(fullName) ? "No Name" : fullName.trim();
     }
 
     public void setPhone(String phone) {
         String p = (phone == null) ? "" : phone.trim();
-        // simple validation: only digits, length 8–15
-        if (!isDigits(p) || p.length() < 8 || p.length() > 15) this.phone = "00000000";
-        else this.phone = p;
+        if (!isDigits(p) || p.length() < 8 || p.length() > 15)
+            this.phone = "00000000";
+        else
+            this.phone = p;
     }
 
     public void setUsername(String username) {
-        if (isBlank(username)) this.username = "staff_" + this.staffId;
-        else this.username = username.trim();
+        this.username = isBlank(username) ? "staff_" + this.staffId
+                                          : username.trim();
     }
 
     public void setPassword(String password) {
         String pw = (password == null) ? "" : password;
-        // simple rule for teaching: >= 4 chars
-        if (pw.length() < 4) this.password = "0000";
-        else this.password = pw;
+        this.password = (pw.length() < 4) ? "0000" : pw;
     }
 
     public void setPosition(String position) {
-        if (isBlank(position)) this.position = "Staff";
-        else this.position = position.trim();
+        this.position = isBlank(position) ? "Manager" : position.trim();
     }
 
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    // ====== Helpers ======
+    // ====== Helper Methods ======
     private boolean isBlank(String s) {
         return s == null || s.trim().isEmpty();
     }
@@ -102,7 +99,7 @@ public class CashierStaff implements IStaff{
     // ====== toString ======
     @Override
     public String toString() {
-        return "Staff{" +
+        return "ManagerStaff{" +
                 "staffId='" + staffId + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", phone='" + phone + '\'' +
