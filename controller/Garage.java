@@ -6,6 +6,7 @@ import other.Order;
 import other.Vehicle;
 import user.IStaff;
 import user.ManagerStaff;
+import user.Staff;
 
 public class Garage {
     public static final String CREATE_STAFF = "CREATE_STAFF";
@@ -66,7 +67,9 @@ public class Garage {
     // STAFF MANAGEMENT
     // =========================
     private void seedDefaultAdmin() {
-        ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", "Manager");
+        // ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", "Manager");
+        Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234");
+ManagerStaff admin = new ManagerStaff(s1, 2000);
         staffs.add(admin);
     }
 
@@ -77,7 +80,7 @@ public class Garage {
         }
         if (!loggedInStaff.isActive()) {
             loggedInStaff = null;
-            setLastMessage("Action denied: staff is inactive (auto logout).");
+            setLastMessage("Action denied: staff is inactive (aauto logout).");
             return false;
         }
         return true;
