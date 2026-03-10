@@ -9,7 +9,7 @@ public class CashierStaff extends Staff {
 
     // ====== Constructor — takes a Staff object + salary (teacher's pattern) ======
     public CashierStaff(Staff s, float salary) {
-        super(s.getStaffId(), s.getFullName(), s.getPhone(), s.getUsername(), s.getPassword());
+        super(s.getStaffId(), s.getFullName(), s.getPhone(), s.getUsername(), s.getPassword() , salary); // call Staff constructor to set fields
         this.setSalary(salary); 
         System.out.println("CashierStaff created: " + this);
     }

@@ -10,16 +10,18 @@ public class Staff implements IStaff {
     private String username;
     private String password;
     private boolean active;
+    private float salary;
 
     // ====== Constructor ======
     public Staff(String staffId, String fullName, String phone,
-                 String username, String password) {
+                 String username, String password, float salary) {
         setStaffId(staffId);
         setFullName(fullName);
         setPhone(phone);
         setUsername(username);
         setPassword(password);
         this.active = true;
+        setSalary(salary);
     }
 
     // ====== Default can() — plain Staff has no permissions ======
@@ -34,6 +36,7 @@ public class Staff implements IStaff {
     public String getPhone()    { return phone; }
     public String getUsername() { return username; }
     public boolean isActive()   { return active; }
+    public float getSalary()    { return salary; }
 
     protected String getPassword() { return password; }
 
@@ -89,6 +92,13 @@ public class Staff implements IStaff {
         }
         return true;
     }
+    public void setSalary(float salary) {
+        if (salary < 400) {
+            System.out.println("error: need more salary");
+        } else {
+            this.salary = salary;
+        }
+    }
 
     // ====== toString ======
     @Override
@@ -101,7 +111,7 @@ public class Staff implements IStaff {
                 '}';
     }
 
-    // ====== equals (by phone, matching teacher) ======
+    // ====== equals ======
     @Override
     public boolean equals(Object obj) {
         Staff s1 = (Staff) obj;

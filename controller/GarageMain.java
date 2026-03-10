@@ -1,5 +1,5 @@
 package controller;
-import java.util.Scanner;
+// import java.util.Scanner;
 
 
 import user.CashierStaff;
@@ -167,10 +167,10 @@ public class GarageMain {
     //     System.out.println("8) Logout");
     //     System.out.println("0) Exit");
     // }
-   Staff staff1 = new Staff("S001", "Alice Smith", "0123456789", "Female","password123");
-   Staff staff2 = new Staff("S002", "Bob Johnson", "0987654321", "Male", "password456");
-   CashierStaff cashier = new CashierStaff(staff1, 10000);
-   ManagerStaff managerStaff = new ManagerStaff(staff2, 1500);
+   Staff staff1 = new Staff("S001", "Alice Smith", "0123456789", "Female","password123" , 500);
+   Staff staff2 = new Staff("S002", "Bob Johnson", "0987654321", "Male", "password456" , 600);
+   CashierStaff cashier = new CashierStaff(staff1, 10000 );
+   ManagerStaff managerStaff = new ManagerStaff(staff2, 1500 );
    Staff staff = new ManagerStaff(staff2, 1500);
    Object obj =staff;
    System.out.println(obj.getClass()); // need to make something different to test instanceof
