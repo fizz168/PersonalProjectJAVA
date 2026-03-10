@@ -6,9 +6,12 @@ public class ManagerStaff extends CashierStaff  {
     private float benefit;
 
     // ====== Constructor — takes a Staff object + salary (teacher's pattern) ======
-    public ManagerStaff(Staff s, float salary) {
-        super(s, salary); // call CashierStaff constructor to set Staff fields and salary
-        System.out.println("ManagerStaff created: " + this);
+    public ManagerStaff(String staffId, String fullName, String phone,
+                        String username, String password, float benefit) {
+
+
+        super(staffId, fullName, phone, username, password, benefit); // call CashierStaff constructor to set Staff fields and salary
+       
     }
 
     // ====== Manager can do everything ======

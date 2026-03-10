@@ -1,7 +1,6 @@
 
 package user;
-
-public class Staff implements IStaff {
+public abstract class Staff implements IStaff {
 
     // ====== Fields ======
     private String staffId;
@@ -25,10 +24,7 @@ public class Staff implements IStaff {
     }
 
     // ====== Default can() — plain Staff has no permissions ======
-    @Override
-    public boolean can(String action) {
-        return false;
-    }
+   public abstract boolean can(String action);
 
     // ====== Getters ======
     public String getStaffId()  { return staffId; }
@@ -101,16 +97,11 @@ public class Staff implements IStaff {
     }
 
     // ====== toString ======
-    @Override
+ @Override
     public String toString() {
-        return "S{" +
-                ", fullName='" + fullName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", username='" + username + '\'' +
-                ", active=" + active +
-                '}';
+        return "Staff [staffId=" + staffId + ", fullName=" + fullName + ", phone=" + phone + ", username=" + username
+                + ", password=" + password + ", active=" + active + ", salary=" + salary + "]";
     }
-
     // ====== equals ======
     @Override
     public boolean equals(Object obj) {
@@ -120,4 +111,6 @@ public class Staff implements IStaff {
         }
         return false;
     }
+
+  
 }

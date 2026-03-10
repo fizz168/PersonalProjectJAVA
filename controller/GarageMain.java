@@ -2,8 +2,11 @@ package controller;
 // import java.util.Scanner;
 
 
+import java.util.ArrayList;
+
 import user.CashierStaff;
 import user.ManagerStaff;
+import user.SellerStaff;
 import user.Staff;
 
 public class GarageMain {
@@ -167,13 +170,28 @@ public class GarageMain {
     //     System.out.println("8) Logout");
     //     System.out.println("0) Exit");
     // }
-   Staff staff1 = new Staff("S001", "Alice Smith", "0123456789", "Female","password123" , 500);
-   Staff staff2 = new Staff("S002", "Bob Johnson", "0987654321", "Male", "password456" , 600);
-   CashierStaff cashier = new CashierStaff(staff1, 10000 );
-   ManagerStaff managerStaff = new ManagerStaff(staff2, 1500 );
-   Staff staff = new ManagerStaff(staff2, 1500);
-   Object obj =staff;
-   System.out.println(obj.getClass()); // need to make something different to test instanceof
+//    Staff staff1 = new Staff("S001", "Alice Smith", "0123456789", "Female","password123" , 500);
+//    Staff staff2 = new Staff ("S002", "Bob Johnson", "0987654321", "Male", "password456" , 600); 
+//    CashierStaff cashier = new CashierStaff(staff1, 10000 );
+//    ManagerStaff managerStaff = new ManagerStaff(staff2, 1500 );
+//    Staff staff = new ManagerStaff(staff2, 1500);
+//    Object obj =staff;
+//    System.out.println(obj.getClass()); // need to make something different to test instanceof
 // obj is the biggest datatype cannot cast to anything 
+// Add to main to prove polymorphism
+ArrayList<Staff> staffs = new ArrayList<>();
+staffs.add(new CashierStaff("S001", "Alice", "010000001", "alice", "1234", 1000));
+staffs.add(new SellerStaff("S002", "Bob", "010000002", "bob", "1234",400));
+staffs.add(new ManagerStaff("S003", "Charlie", "010000003", "charlie", "1234", 2000));
+
+for (Staff s : staffs) {
+    System.out.println(s.getUsername() 
+        + " | CREATE_ORDER: "   + s.can(Garage.CREATE_ORDER)
+        + " | CREATE_MENU_ITEM: " + s.can(Garage.CREATE_MENU_ITEM)
+        + " | VIEW_ORDERS: "    + s.can(Garage.VIEW_ORDERS));
+}
+
+
+
 }
 }

@@ -7,8 +7,8 @@ public class SellerStaff extends Staff {
 
     // ====== Constructor — simple inheritance (like teacher's BaristaStaff) ======
     public SellerStaff(String staffId, String fullName, String phone,
-                       String username, String password, String position) {
-        super(staffId, fullName, phone, username, password , 400); // default salary for SellerStaff
+                       String username, String password, float salary) {
+        super(staffId, fullName, phone, username, password ,salary); // default salary for SellerStaff
     }
 
     // ====== Permission Logic ======

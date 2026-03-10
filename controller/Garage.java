@@ -67,9 +67,9 @@ public class Garage {
     // STAFF MANAGEMENT
     // =========================
     private void seedDefaultAdmin() {
-        // ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", "Manager");
-        Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234" , 100);
-ManagerStaff admin = new ManagerStaff(s1, 2000);
+  
+      
+   ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", 1000);
         staffs.add(admin);
     }
 
