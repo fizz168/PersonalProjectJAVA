@@ -1,10 +1,4 @@
 package other;
-// class Rental {
-//     Vehicle vehicle;   // reference type [cite: 234]
-//     Customer customer; // reference type [cite: 234]
-//     int days;          // primitive type [cite: 233]
-//     double priceAtBooking; // SNAPSHOT: primitive copy [cite: 255]
-
 import user.IStaff;
 
 public class Order {
