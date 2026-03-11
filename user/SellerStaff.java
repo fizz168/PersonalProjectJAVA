@@ -8,7 +8,7 @@ public class SellerStaff extends Staff {
     // ====== Constructor — simple inheritance (like teacher's BaristaStaff) ======
     public SellerStaff(String staffId, String fullName, String phone,
                        String username, String password, float salary) {
-        super(staffId, fullName, phone, username, password ,salary); // default salary for SellerStaff
+        super(staffId, fullName, phone, username, password ,salary); 
     }
 
     // ====== Permission Logic ======
@@ -21,4 +21,10 @@ public class SellerStaff extends Staff {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "SellerStaff []";
+    }
+    
 }

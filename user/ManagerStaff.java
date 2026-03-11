@@ -5,7 +5,7 @@ public class ManagerStaff extends CashierStaff  {
 
     private float benefit;
 
-    // ====== Constructor — takes a Staff object + salary (teacher's pattern) ======
+    // ====== Constructor  ======
     public ManagerStaff(String staffId, String fullName, String phone,
                         String username, String password, float benefit) {
 

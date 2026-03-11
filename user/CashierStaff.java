@@ -1,30 +1,12 @@
-
 package user;
-
 import controller.Garage;
 
 public class CashierStaff extends Staff {
 
-    private float salary;
-
-    // ====== Constructor — takes a Staff object + salary (teacher's pattern) ======
+    // ====== Constructor ======
     public CashierStaff(String staffId, String fullName, String phone,
                         String username, String password, float salary) {
-super(staffId, fullName, phone, username, password, salary);
-       
-    }
-
-    // ====== Salary Getter/Setter ======
-    public float getSalary() {
-        return salary;
-    }
-
-    public void setSalary(float salary) {
-        if (salary < 400) {
-            System.out.println("error: need more salary");
-        } else {
-            this.salary = salary;
-        }
+        super(staffId, fullName, phone, username, password, salary); // salary goes to Staff
     }
 
     // ====== Permission Logic ======
@@ -42,21 +24,13 @@ super(staffId, fullName, phone, username, password, salary);
     // ====== equals ======
     @Override
     public boolean equals(Object obj) {
-        CashierStaff other = (CashierStaff) obj;
-        if (!super.equals(obj)) {
-            return false;
-        } else {
-            if (Float.floatToIntBits(salary) != Float.floatToIntBits(other.salary))
-                return false;
-        }
+        if (!super.equals(obj)) return false;
         return true;
     }
-
-    // ====== toString ======
+// ====== toString ======
     @Override
     public String toString() {
-        return super.toString() +
-                ", salary=" + salary +
-                '}';
+        return "CashierStaff []";
     }
+
 }
