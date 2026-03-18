@@ -1,8 +1,6 @@
 package other;
 import user.IStaff;
-
 public class Order {
-
     private String orderId;
     private Customer customer;
     private Vehicle item;

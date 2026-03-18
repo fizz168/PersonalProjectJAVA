@@ -25,7 +25,7 @@ public class ManagerStaff extends CashierStaff  {
         return benefit;
     }
 
-    public void setSalary(float benefit) {
+    public void setBenefit(float benefit) {
          if (benefit < 1000) {
             System.out.println("error: need more salary");
         } else {
@@ -33,6 +33,9 @@ public class ManagerStaff extends CashierStaff  {
         }
        
     }
+    public float getTotalPay() {
+    return getSalary() + benefit;
+}
 
     // ====== toString ======
     @Override
