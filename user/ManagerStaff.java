@@ -1,7 +1,7 @@
 
 package user;
 
-public class ManagerStaff extends CashierStaff  {
+public class ManagerStaff extends Staff  {
 
     private float benefit;
 
