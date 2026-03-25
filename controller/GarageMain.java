@@ -564,9 +564,8 @@ public class GarageMain {
         String password = readConfirmedPassword();
 
         // 5. Salary Validation (Keep your existing try-catch logic)
-        System.out.print("Salary: ");
-        String salaryStr = sc.nextLine().trim();
-        float salary;
+        String salaryStr = readValidSalary("Salary (integers only): ");
+        float salary = Float.parseFloat(salaryStr);
         try {
             salary = Float.parseFloat(salaryStr);
         } catch (NumberFormatException e) {
@@ -601,57 +600,37 @@ public class GarageMain {
     // CREATE CUSTOMER
     // try-catch + throw + throws + finally
     // =====================================================
-    static void doCreateCustomer() {
-        System.out.println("\n--- Create Customer ---");
-        try {
-            System.out.print("Customer ID: ");
-            String custId = sc.nextLine().trim();
+  static void doCreateCustomer() {
+    System.out.println("\n--- Create Customer ---");
+    try {
+        String custId = read5DigitId("Customer ID (5 digits): ");
+        String fullName = readLettersOnly("Full Name: ");
+        String phone = read12DigitPhone("Phone (8-15 digits): ");
 
-            System.out.print("Full Name: ");
-            String fullName = sc.nextLine().trim();
+        System.out.print("Gender: ");
+        String gender = sc.nextLine().trim();
 
-            System.out.print("Phone: ");
-            String phone = sc.nextLine().trim();
+        // Use your confirmed password method here too for safety
+        String password = readConfirmedPassword();
 
-            System.out.print("Gender: ");
-            String gender = sc.nextLine().trim();
+        // ✅ THE FIX: Loops until a valid positive number is entered
+        double balance = readValidBalance("Balance ($): ");
 
-            String password = readPassword("Password: "); // ✅ CHANGED — hidden input
-
-            System.out.print("Balance ($): ");
-            String balStr = sc.nextLine().trim();
-
-            if (custId.isEmpty() || fullName.isEmpty() || balStr.isEmpty()) {
-                throw new GarageException("Customer ID, Name, and Balance cannot be empty.");
-            }
-
-            double balance;
-            try {
-                balance = Double.parseDouble(balStr);
-            } catch (NumberFormatException e) {
-                throw new GarageException("Balance must be a number. You entered: '" + balStr + "'");
-            }
-
-            if (balance < 0) {
-                throw new GarageException("Balance cannot be negative.");
-            }
-
-            garage.createCustomer(custId, fullName, phone, gender, password, balance);
-            String msg = garage.getLastMessage();
-
-            if (msg.contains("denied") || msg.contains("exists") || msg.contains("Cannot")) {
-                throw new GarageException(msg);
-            }
-
-            System.out.println("[OK] " + msg);
-
-        } catch (GarageException e) {
-            System.out.println("[ERROR] " + e.getMessage());
-        } finally {
-            System.out.println("   (Create customer attempt finished)");
+        garage.createCustomer(custId, fullName, phone, gender, password, balance);
+        
+        String msg = garage.getLastMessage();
+        if (msg.contains("denied") || msg.contains("exists") || msg.contains("Cannot")) {
+            throw new GarageException(msg);
         }
-    }
 
+        System.out.println("[OK] " + msg);
+
+    } catch (GarageException e) {
+        System.out.println("[ERROR] " + e.getMessage());
+    } finally {
+        System.out.println("   (Create customer attempt finished)");
+    }
+}
     // =====================================================
     // ADD VEHICLE
     // =====================================================
@@ -720,10 +699,10 @@ public class GarageMain {
         System.out.println("\n--- Rent Vehicle ---");
         try {
             System.out.print("Customer ID: ");
-            String custId = sc.nextLine().trim();
+            String custId = read5DigitId("5 didgit");
 
             System.out.print("Vehicle Plate: ");
-            String plate = sc.nextLine().trim();
+            String plate = read12DigitPhone(custId);
 
             System.out.print("Number of Days: ");
             String daysStr = sc.nextLine().trim();
@@ -853,17 +832,32 @@ private static String read12DigitPhone(String prompt) {
         System.out.println("[ERROR] Phone must be 8-15 digits. Try again.");
     }
 }
-private static float readValidSalary(String prompt) {
+private static String readValidSalary(String prompt) {
     while (true) {
         System.out.print(prompt);
         String input = sc.nextLine().trim();
         
         // Regex: ^\d+$ checks for 1 or more digits only
         if (input.matches("^\\d+$")) {
-            return Float.parseFloat(input);
+            return input;
         }
         
         System.out.println("[ERROR] Salary must be a whole number (integers only). Try again.");
+    }
+}
+private static double readValidBalance(String prompt) {
+    while (true) {
+        System.out.print(prompt);
+        String input = sc.nextLine().trim();
+        try {
+            double value = Double.parseDouble(input);
+            if (value >= 0) {
+                return value; // Success
+            }
+            System.out.println("[ERROR] Balance cannot be negative.");
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] Balance must be a number (e.g., 50 or 10.50).");
+        }
     }
 }
 
