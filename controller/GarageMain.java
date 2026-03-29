@@ -57,23 +57,6 @@ public class GarageMain {
             default -> System.out.println("[ERROR] Invalid choice.");
         }
     }
-
-    // static void handleStaffMenu(int choice) {
-    //     switch (choice) {
-    //         case 1  -> doCreateStaff();
-    //         case 2  -> doCreateCustomer();
-    //         case 3  -> garage.printCustomers();
-    //         case 4  -> garage.printStaffs();
-    //         case 5  -> doAddVehicle();
-    //         case 6  -> garage.printVehicles();
-    //         case 7  -> doReturnVehicle();
-    //         case 8  -> doRentVehicle();
-    //         case 9  -> garage.printOrders();
-    //         case 10 -> doShowMyInfo();
-    //         case 0  -> doLogout();
-    //         default -> System.out.println("[ERROR] Invalid choice.");
-    //     }
-    // }
     static void handleStaffMenu(int choice) {
         Staff logged = (Staff) garage.getLoggedInStaff();
 
@@ -240,21 +223,6 @@ public class GarageMain {
         System.out.println("0) Exit");
         System.out.println("==================================");
     }
-
-    // static void printStaffMenu() {
-    //     Staff logged = (Staff) garage.getLoggedInStaff();
- 
-    //     System.out.println("\n========== STAFF MENU ==========");
-    //     System.out.println("Logged in: " + logged.getFullName() + " [" + logged.getClass().getSimpleName() + "]");
-    //     System.out.println("---------------------------------");
-    //     System.out.println("1) Create Staff    2) Create Customer");
-    //     System.out.println("3) List Customers  4) List Staffs");
-    //     System.out.println("5) Add Vehicle     6) List Vehicles");
-    //     System.out.println("7) Return Vehicle  8) Rent Vehicle");
-    //     System.out.println("9) List Orders    10) My Info");
-    //     System.out.println("0) Logout");
-    //     System.out.println("=================================");
-    // }
   static void printStaffMenu() {
     Staff logged = (Staff) garage.getLoggedInStaff();
     String role = logged.getClass().getSimpleName().replace("Staff", "");
