@@ -210,13 +210,13 @@ public class Garage {
         }
     }
 
-    private Customer findCustomerById(String customerId) {
-        if (isBlank(customerId)) return null;
-        for (Customer c : customers) {
-            if (c.getCustomerPersonalId().equalsIgnoreCase(customerId.trim())) return c;
-        }
-        return null;
-    }
+    // private Customer findCustomerById(String customerId) {
+    //     if (isBlank(customerId)) return null;
+    //     for (Customer c : customers) {
+    //         if (c.getCustomerPersonalId().equalsIgnoreCase(customerId.trim())) return c;
+    //     }
+    //     return null;
+    // }
 
     // =========================
     // VEHICLE MANAGEMENT
@@ -250,14 +250,18 @@ public class Garage {
         }
     }
 
-    private Vehicle findVehicleByNumberPlate(String numberPlate) {
+    public Vehicle findVehicleByNumberPlate(String numberPlate) {
         if (isBlank(numberPlate)) return null;
         for (Vehicle v : vehicles) {
             if (v.getVehicleNumberPlate().equalsIgnoreCase(numberPlate.trim())) return v;
         }
         return null;
     }
-
+    /**
+     * ✅ NEW: Finds a vehicle by its plate. 
+     * Make sure this is PUBLIC so InputValidator can use it.
+     */
+   
     public void returnVehicle(String vehicleNumberPlate) {
         if (!requireStaffLogin()) return;
         Vehicle v = findVehicleByNumberPlate(vehicleNumberPlate);
@@ -336,6 +340,54 @@ public class Garage {
                     + " | Staff: " + (o.getCreatedBy() != null ? o.getCreatedBy().getFullName() : "Unknown"));
         }
     }
+    // 1. Fixes the error in GarageMain (case 4)
+    public void printStaffs() {
+        System.out.println("\n--- Staff List (" + staffs.size() + ") ---");
+        if (staffs.isEmpty()) {
+            System.out.println("No staff members found.");
+            return;
+        }
+        for (int i = 0; i < staffs.size(); i++) {
+            Staff s = staffs.get(i);
+            System.out.println((i + 1) + ") ID: " + s.getStaffId() 
+                + " | Name: " + s.getFullName() 
+                + " | Role: " + s.getClass().getSimpleName());
+        }
+    }
+
+    // 2. Fixes the error in InputValidator (Line 20)
+    public Staff findStaffById(String staffId) {
+        if (staffId == null) return null;
+        for (Staff s : staffs) {
+            if (s.getStaffId().equalsIgnoreCase(staffId.trim())) return s;
+        }
+        return null;
+    }
+
+    // 3. Fixes the visibility error in InputValidator (Line 20)
+    // Make sure your existing findCustomerById is changed from 'private' to 'public'
+    public Customer findCustomerById(String customerId) {
+        if (customerId == null) return null;
+        for (Customer c : customers) {
+            if (c.getCustomerPersonalId().equalsIgnoreCase(customerId.trim())) return c;
+        }
+        return null;
+    }
+
+    // 4. Fixes the error in InputValidator (Line 34)
+    public boolean isPhoneTaken(String phone) {
+        if (phone == null) return false;
+        String p = phone.trim();
+        // Check staff list
+        for (Staff s : staffs) {
+            if (s.getPhone().equals(p)) return true;
+        }
+        // Check customer list
+        for (Customer c : customers) {
+            if (c.getCustomerPhoneNumber().equals(p)) return true;
+        }
+        return false;
+    }
 
 
     // TASK 3: Anonymous Inner Class   
@@ -383,21 +435,5 @@ public class Garage {
                 + ", vehicles=" + vehicles.size()
                 + ", orders=" + orders.size() + "}";
     }
-    public void printStaffs() {
-    System.out.println("\n--- Staffs (" + staffs.size() + ") ---");
-    if (staffs.isEmpty()) {
-        System.out.println("No staffs.");
-        return;
-    }
-    for (int i = 0; i < staffs.size(); i++) {
-        Staff s = staffs.get(i);
-        System.out.println((i + 1) + ") "
-                + "ID: " + s.getStaffId()
-                + " | Name: " + s.getFullName()
-                + " | Username: " + s.getUsername()
-                + " | Salary: $" + s.getSalary()
-                + " | Active: " + s.isActive());
-    }
-}
 
 }

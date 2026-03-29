@@ -1,4 +1,4 @@
-package controller;
+package exception;
 
 // =====================================================
 // Custom Exception — represents all Garage-specific errors

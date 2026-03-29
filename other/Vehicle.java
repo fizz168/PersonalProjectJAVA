@@ -22,7 +22,7 @@ public Vehicle(String vehicleNumberPlate, String brand, String model){
     this.brand = brand;
     this.model = model;
     this.pricePerDay = 25.00;
-    this.isAvalible = false;
+    this.isAvalible = true;
     this.vehicleType = "general";
 }
 public String getVehicleNumberPlate(){
