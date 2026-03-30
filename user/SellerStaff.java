@@ -16,7 +16,7 @@ public class SellerStaff extends Staff {
     public boolean can(String action) {
         if (action.equals(Garage.CREATE_MENU_ITEM)
          || action.equals(Garage.VIEW_ORDERS)
-         || action.equals(Garage.UPDATE_ORDER_STATUS)) {
+         || action.equals(Garage.UPDATE_ORDER_STATUS) || action.equals(Garage.CREATE_ORDER)) {
             return true;
         }
         return false;

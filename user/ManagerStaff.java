@@ -7,11 +7,11 @@ public class ManagerStaff extends Staff  {
 
     // ====== Constructor  ======
     public ManagerStaff(String staffId, String fullName, String phone,
-                        String username, String password, float benefit) {
+                        String username, String password, float salary, float benefit) {
 
 
-        super(staffId, fullName, phone, username, password, benefit); // call CashierStaff constructor to set Staff fields and salary
-       
+        super(staffId, fullName, phone, username, password, salary); // call CashierStaff constructor to set Staff fields and salary
+        this.benefit = benefit;
     }
 
     // ====== Manager can do everything ======

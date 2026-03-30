@@ -13,6 +13,7 @@ import user.Staff;
 import user.StaffFilter;   
 
 public class Garage {
+   
 
     public static final String CREATE_STAFF     = "CREATE_STAFF";
     public static final String CREATE_CUSTOMER  = "CREATE_CUSTOMER";
@@ -38,7 +39,9 @@ public class Garage {
     public Garage(String garageName, String garageAddress) {
         setGarageName(garageName);
         setGarageAddress(garageAddress);
-
+// vehicles.add(new Vehicle("2A-1111", "Toyota", "Prius", 500, "Sedan"));
+// vehicles.add(new Vehicle("2B-2222", "Lexus", "RX350", 500, "SUV"));
+// customers.add(new Customer("11111", "Sokha", "012345678", "M", "1234", 500.0));
         vehicles  = new ArrayList<>();
         staffs    = new ArrayList<>();
         orders    = new ArrayList<>();
@@ -74,7 +77,7 @@ public class Garage {
     // SEED DEFAULT ADMIN
     // =========================
     private void seedDefaultAdmin() {
-        ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", 2000);
+        ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", 2000, 500);
         admin.setBenefit(500);
         staffs.add(admin);
     }
@@ -154,7 +157,7 @@ public class Garage {
         }
 
         if (position.equalsIgnoreCase("Manager")) {
-            ManagerStaff m = new ManagerStaff(staffId, fullName, phone, username, password, salary);
+            ManagerStaff m = new ManagerStaff(staffId, fullName, phone, username, password, salary , 500);
             staffs.add(m);
             setLastMessage("Manager [" + fullName + "] created successfully.");
 
@@ -246,7 +249,7 @@ public class Garage {
                     + " | " + v.getBrand() + " " + v.getModel()
                     + " | $" + v.getPricePerDay() + "/day"
                     + " | Type: " + v.getVehicleType()
-                    + " | Available: " + (v.isAvalible() ? "✅ Yes" : "❌ No (Rented)"));
+                    + " | Available: " + (v.isAvailable() ? " Yes" : "❌ No (Rented)"));
         }
     }
 
@@ -292,7 +295,7 @@ public class Garage {
             return;
         }
 
-        if (!vehicle.isAvalible()) {
+        if (!vehicle.isAvailable()) {
             setLastMessage("Cannot rent: vehicle [" + vehicleNumberPlate + "] is already rented.");
             return;
         }
