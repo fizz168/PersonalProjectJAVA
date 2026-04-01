@@ -26,7 +26,7 @@ public class ManagerStaff extends Staff  {
     }
 
     public void setBenefit(float benefit) {
-         if (benefit < 1000) {
+         if (benefit < 400) {
             System.out.println("error: need more salary");
         } else {
             this.benefit = benefit;
