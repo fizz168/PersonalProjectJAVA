@@ -15,11 +15,7 @@ public class GarageMain {
     static Garage garage = new Garage("CADT Garage", "Phnom Penh");
 
     public static void main(String[] args) {
-        Customer c1 = new Customer("C001", "Alice", "012345678", "F", "pass123", 1000);
-        Customer c2 = c1;
-            System.out.println(c1.equals(c2)); // true (same reference)
-            System.out.println(c1 == c2);      // true (same reference)
-            System.out.println(c1);           // Customer [ID: C001, Name: Alice, Phone
+   
         int choice;
 
         do {
